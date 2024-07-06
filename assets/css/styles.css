@@ -1,0 +1,29 @@
+body {
+    background-color:  #f7efda;
+    padding-left: 10px;
+}
+
+header {
+    margin: 10px;
+    border-bottom: 1px solid black;
+}
+
+
+.col.card {
+    margin: 2%;
+    margin-bottom: 0;
+}
+
+
+.btn, .btn-large {
+    width: 100%;
+}
+
+form .input-field label {
+    color: black;
+}
+
+form .input-field input[type=text] {
+    border-bottom: 1px solid black;
+}
+

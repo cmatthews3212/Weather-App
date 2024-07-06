@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection"/>
+    <title>Weather App</title>
+</head>
+<body class="row">
+    <header>
+        <h1>When will the sun be out?</h1>
+        <h6>By Christine Matthews</h6>
+    </header>
+
+    <aside class="col s3 card-panel green lighten-2">
+        <form>
+            <h4>Will it be sunny by me?</h4>
+           <div class="input-field">
+               <input type="text" id="city" name="city" class="validate">
+               <label for="city">Search your city here...</label>
+            </div>
+            <button id="search-btn" class="waves-effect waves-light green darken-4 btn">Search</button>
+        </form>
+        <section id="search-history">
+            <h5>City's Searched</h5>
+            <div class="test history card-panel green darken-4 white-text waves-effect waves-light btn-large">Chicago</div>
+        </section>
+    </aside>
+
+    <main class="col s9">
+        <section id="todays-weather" class="top">
+            <div class="test card-panel pink lighten-4">
+                <h2>Chicago Today</h2>
+                <ul>
+                    <li>Temp: 81 degrees</li>
+                    <li>Wind: 8 MPH</li>
+                    <li>Humidity: 50%</li>
+                </ul>
+            </div>
+
+        </section>
+        <section id="future-weather" class="bottom card-panel pink lighten-2">
+            <div class="test">
+                <h2>Chicago this Week</h2>
+            </div>
+            <div class="test cards row">
+                <div class="col l2 card-panel pink lighten-4 card">
+                        <h5>Tomorrow</h5>
+                        <div>Temp: 90 degrees</div>
+                        <div>Wind: 9 MPG</div>
+                        <div>Humidity: 60%</div>
+                        <div>__________________________</div>
+                </div>
+                <div class="card col l2 card-panel pink lighten-4">
+                    <h5>Tuesday</h5>
+                    <div>Temp: 90 degrees</div>
+                    <div>Wind: 9 MPG</div>
+                    <div>Humidity: 60%</div>
+                    <div>__________________________</div>
+                </div>
+                <div class="card col l2 card-panel pink lighten-4">
+                    <h5>Wednesday</h5>
+                    <div>Temp: 90 degrees</div>
+                    <div>Wind: 9 MPG</div>
+                    <div>Humidity: 60%</div>
+                    <div>__________________________</div>
+                </div>
+                <div class="card col l2 card-panel pink lighten-4">
+                    <h5>Thursday</h5>
+                    <div>Temp: 90 degrees</div>
+                    <div>Wind: 9 MPG</div>
+                    <div>Humidity: 60%</div>
+                    <div>__________________________</div>
+                </div>
+                <div class="card col l2 card-panel pink lighten-4">
+                    <h5>Friday</h5>
+                    <div>Temp: 90 degrees</div>
+                    <div>Wind: 9 MPG</div>
+                    <div>Humidity: 60%</div>
+                    <div>__________________________</div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+   
+
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

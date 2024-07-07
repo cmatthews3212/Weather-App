@@ -8,12 +8,16 @@ const list = document.createElement('ul');
 const liEl1 = document.createElement('li')
 const liEl2 = document.createElement('li')
 const liEl3 = document.createElement('li')
+const sunnyData = document.createElement('h5')
+
 list.append(liEl1)
 list.append(liEl2)
 list.append(liEl3)
+
 let temp = ''
 let wind = ''
 let humid = ''
+let sun = ''
 const apiKey = 'ccf6ee45f4426f5df18513805a5e47df';
 let lat =''
 let lon = ''
@@ -37,21 +41,32 @@ function processData (data) {
 
 
 function convertCityToNum () {
-    const cityUrl = `https://api.api-ninjas.com/v1/geocoding?city=${city.value}&state=${state.value}&country=${country.value}&X-Api-Key=VgssbW4kdRpWeJjECntvng==nBgdtI7KDrVd5JZc`
+    if (city.value === '') {
+        alert('Please enter a city')
+    } else if (state.value === '' && country.value !== '') {
+        alert('Please enter both a state and country')
+    } else if (state.value !== '' && country.value === '') {
+        alert('Please enter both a state and country')
+    } else {
+
+    const cityUrl = `https://api.api-ninjas.com/v1/geocoding?city=${city.value}&country=${country.value}&state=${state.value}&X-Api-Key=VgssbW4kdRpWeJjECntvng==nBgdtI7KDrVd5JZc`
     fetch (cityUrl)
     .then(response => response.json())
     .then(data => {
+        // console.log(data)
         lat = data[0].latitude
         lon = data[0].longitude
-        console.log(lat, lon)
+        // console.log(lat, lon)
         getCityWeather(lat, lon)
         
     })
     .catch(error => {
         console.error('error fetching data:', error)
     })
+    }
+    }
     
-}
+
 
 
 function getCityWeather () {
@@ -63,7 +78,8 @@ function getCityWeather () {
         temp = data.current.temp;
         wind = data.current.wind_speed;
         humid = data.current.humidity
-        createCurrentData(temp, wind, humid)
+        sun = data.current.clouds
+        createCurrentData(temp, wind, humid, sun)
 
     })
     .catch(error => {
@@ -84,7 +100,18 @@ function createCurrentData () {
     liEl2.textContent = `Wind: ${wind}`
     liEl3.textContent =  `Humidity: ${humid}`
 
+    if (sun === 100) {
+        sunnyData.textContent = `The Sun is hiding behind clouds completely today!`
+    } else if (sun < 100 || sun >= 50) {
+        sunnyData.textContent = `The Sun is peaking through the clouds a little today!`
+    } else if (sun <= 49 || sun > 0) {
+        sunnyData.textContent = `The Sun is peaking through the clouds a lot today!`
+    } else if (sun === 0) {
+        sunnyData.textContent = `The Sun is completely out today!`
+    }
+
     today.appendChild(heading)
+    today.appendChild(sunnyData)
     today.appendChild(list)
     topToday.appendChild(today)
     console.log(today)

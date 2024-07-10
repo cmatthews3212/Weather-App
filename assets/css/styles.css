@@ -27,3 +27,6 @@ form .input-field input[type=text] {
     border-bottom: 1px solid black;
 }
 
+.humid-mar {
+    margin-bottom:20px;
+}

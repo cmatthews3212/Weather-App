@@ -70,6 +70,8 @@ let daysOfWeekArray = [tomorrow, twoDays, threeDays, fourDays, fiveDays]
     event.preventDefault();
     convertCityToNum();
 
+    // createCurrentData()
+    // createDailyData()
     
 })
 
@@ -100,7 +102,7 @@ function readStorage () {
 
 
 function processData (data) {
-    // console.log('data received:' + data)
+    console.log('data received:' + data)
 }
 
 
@@ -216,6 +218,7 @@ function getDailyWeather () {
      
         // retrieveDailyData()
         // createDailyData(temp, wind, humid, sun, date)
+    
         createDailyData()
         
         
@@ -396,24 +399,26 @@ function createCurrentData () {
     // if (storedData !== null) {
     //     window.location.reload()
     // }
+    if (lastCity !== null) {
     today.classList.add('card-panel', 'pink', 'lighten-4');
     todayHeading.textContent = `${lastCity.curCity} Today`
     liEl1.textContent = `Temp: ${lastCity.curTemp} °F`
     liEl2.textContent = `Wind: ${lastCity.curWind} mph`
     liEl3.textContent =  `Humidity: ${lastCity.curHumidity}%`
     icon.classList.add('medium', 'material-icons')
+    }
 
 
-    if (sun === 100) {
+    if (lastCity.curSunny === 100) {
         icon.textContent = 'cloud_queue'
         sunnyData.textContent = `The Sun is hiding behind clouds completely today!`
-    } else if (sun < 100 && sun >= 50) {
+    } else if (lastCity.curSunny < 100 && lastCity.curSunny >= 50) {
         icon.textContent = 'cloud_queue'
         sunnyData.textContent = `The Sun is peaking through the clouds a little today!`
-    } else if (sun <= 49 && sun > 0) {
+    } else if (lastCity.curSunny <= 49 && lastCity.curSunny > 0) {
         icon.textContent = 'wb_sunny'
         sunnyData.textContent = `The Sun is peaking through the clouds a lot today!`
-    } else if (sun === 0) {
+    } else if (lastCity.curSunny === 0) {
         icon.textContent = 'wb_sunny'
         sunnyData.textContent = `The Sun is completely out today!`
     }
@@ -450,9 +455,6 @@ let windArray = []
 let humidArray = []
 // let dateNumArr = []
 function createDailyData () {
-    const storedDayDataString = localStorage.getItem('dataDayObj')
-    const storedDayData = JSON.parse(storedDayDataString)
-    console.log(storedDayData)
     thisWeek.classList.add('card-panel', 'pink', 'lighten-2')
     weekCards.classList.add('row')
     card1.classList.add('col', '12', 'card-panel', 'pink', 'lighten-4', 'card')
@@ -474,11 +476,10 @@ let div4 = document.createElement('div')
 
     let storedDayString = localStorage.getItem('days')
     let storedDay = JSON.parse(storedDayString);
+   
 
-    console.log(storedDay)
-
-    let lastCity = storedDay[storedDay.length - 1]
-    console.log(lastCity)
+    // let lastCity = storedDay[storedDay.length - 1]
+    // console.log(lastCity)
     
         let day = dayjs(date) 
         let dayOfWeek = day.format('dddd')
@@ -487,7 +488,12 @@ let div4 = document.createElement('div')
     
     h5.textContent = dayOfWeek
     // console.log(h5)
-    for (const d of storedDay) {
+    console.log(storedDay)
+    let lastWeek = storedDay.slice(Math.max(storedDay.length - 5, 1))
+    console.log(lastWeek)
+
+    for (const d of lastWeek) {
+    console.log(d)
     div2.textContent = `Temp: ${d.dayTemp} °F`
     div3.textContent = `Wind: ${d.dayWind} mph`
     div4.textContent = `Humidity: ${d.dayHumidity}%`
@@ -504,6 +510,11 @@ let div4 = document.createElement('div')
         i.textContent = 'wb_sunny'
         // sunnyData.textContent = `The Sun is completely out today!`
     }
+    dateArray.push(h5)
+    iconArray.push(i)
+    tempArray.push(div2)
+    windArray.push(div3)
+    humidArray.push(div4)
     }
 
     
@@ -513,7 +524,7 @@ let div4 = document.createElement('div')
     
     //  console.log(array)
     
-    dateArray.push(h5)
+    // console.log(dateArray)
     // console.log(dateArray)
     // dateArray.sort(function (a, b) {
     //     for (let i = 0; i < dateArray.length; i++) {
@@ -523,10 +534,6 @@ let div4 = document.createElement('div')
     //     })
     
     // console.log(dateArray)
-    iconArray.push(i)
-    tempArray.push(div2)
-    windArray.push(div3)
-    humidArray.push(div4)
 
   
 
@@ -562,21 +569,14 @@ let div4 = document.createElement('div')
     
    }
 
-
-//    for ( const card of cardsArray) {
-//     console.log(card)
-//    }
-
-//    for (const date of dateArray) {
-//     console.log(date)
-//    }
     
     thisWeek.appendChild(weekHeading)
     thisWeek.appendChild(weekCards)
 
-
     
 }
+
+createDailyData()
 // function createTomorrowData () {
 //     const card1 = document.createElement('div')
 //     weekCards.classList.add('row')

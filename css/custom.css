@@ -36,4 +36,15 @@ aside hr {
     border-width: 2px;
 }
 
+aside .history {
+    background-color: var(--light-blue);
+    font-size: 20px;
+}
+
+aside .history:hover {
+    cursor: pointer;
+    background-color: #4b595e;
+    color: white;
+}
+
 

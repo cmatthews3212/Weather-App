@@ -3,101 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./css/custom.css" rel="stylesheet">
     <title>Weather App</title>
 </head>
-<body class="row">
-    <header>
-        <h1>When will the sun be out?</h1>
-        <h6>By Christine Matthews</h6>
+<body>
+    <header class="p-4">
+        <h1>Will it by sunny today?</h1>
+        <h5>By: Christine Matthews</h5>
     </header>
-
-    <aside class="col s3 card-panel green lighten-2">
-        <form>
-            <h4>Will it be sunny by me?</h4>
-           <div class="input-field">
-               <input type="text" id="city" name="city" class="validate">
-               <label for="city">City</label>
+    <div class="content-container row m-3 d-flex justify-content-center">
+        <aside id="aside" class="col-3 m-3 rounded">
+           <form>
+            <div class="mb-3 mt-4">
+                <label for="city" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" id="city">
             </div>
-            <div class="input-field">
-                <input type="text" id="state" name="state" class="validate">
-                <label for="city">State (Optional)</label>
-             </div>
-             <div class="input-field">
-                <input type="text" id="country" name="country" class="validate">
-                <label for="city">Country (Optional)</label>
-             </div>
-            <button id="search-btn" class="waves-effect waves-light green darken-4 btn">Search</button>
-        </form>
-        <section id="search-history">
-            <h5>City's Searched</h5>
-            <!-- <div class="test history card-panel green darken-4 white-text waves-effect waves-light btn-large">Chicago</div> -->
-        </section>
-    </aside>
-
-    <main class="col s9">
-        <section id="todays-weather" class="top">
-            <!-- <div class="test card-panel pink lighten-4">
-                <h2>Chicago Today</h2>
+            <button type="submit" id="search-city" class="btn mb-4">Search Weather</button>
+           </form>
+           <hr class="hr mb-4"/>
+           <h3 class="text-center mb-4">Cities Searched</h3>
+           <div id="history-btns">
+                <p id="history" class="history rounded p-3 d-none">Chicago</p>
+           </div>
+        </aside>
+        <main id="weather" class="col-8 m-3 rounded d-none">
+            <div class="top m-3">
+                <h2 id="city-today"></h2>
+                <img id="icon" class="icon mb-2">
+                <p id="sun-info"></p>
                 <ul>
-                    <li>Temp: 81 degrees</li>
-                    <li>Wind: 8 MPH</li>
-                    <li>Humidity: 50%</li>
+                    <li id="temp"></li>
+                    <li id="wind"></li>
+                    <li id="humid"></li>
                 </ul>
-            </div> -->
-
-        </section>
-        <section id="future-weather" >
-            <!-- <div class="test">
-                <h2>Chicago this Week</h2>
             </div>
-            <div class="test cards row">
-                <div class="col l2 card-panel pink lighten-4 card">
-                        <h5>Tomorrow</h5>
-                        <div>Temp: 90 degrees</div>
-                        <div>Wind: 9 MPG</div>
-                        <div>Humidity: 60%</div>
-                        <div>__________________________</div>
-                </div>
-                <div class="card col l2 card-panel pink lighten-4">
-                    <h5>Tuesday</h5>
-                    <div>Temp: 90 degrees</div>
-                    <div>Wind: 9 MPG</div>
-                    <div>Humidity: 60%</div>
-                    <div>__________________________</div>
-                </div>
-                <div class="card col l2 card-panel pink lighten-4">
-                    <h5>Wednesday</h5>
-                    <div>Temp: 90 degrees</div>
-                    <div>Wind: 9 MPG</div>
-                    <div>Humidity: 60%</div>
-                    <div>__________________________</div>
-                </div>
-                <div class="card col l2 card-panel pink lighten-4">
-                    <h5>Thursday</h5>
-                    <div>Temp: 90 degrees</div>
-                    <div>Wind: 9 MPG</div>
-                    <div>Humidity: 60%</div>
-                    <div>__________________________</div>
-                </div>
-                <div class="card col l2 card-panel pink lighten-4">
-                    <h5>Friday</h5>
-                    <div>Temp: 90 degrees</div>
-                    <div>Wind: 9 MPG</div>
-                    <div>Humidity: 60%</div>
-                    <div>__________________________</div>
-                </div> 
-            </div> -->
+            <hr class="hr mb-4"/>
 
-        </section>
-    </main>
-
-   
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-
-    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
-    <script src="assets/js/script.js"></script>
+            <div class="bottom row d-flex justify-content-around mb-4">
+                <div id="tomorrow" class="day col-2 rounded">
+                    <h5 id="tomorrow-name" class="day-of-week"></h5>
+                    <img id="tomorrow-icon" class="icons">
+                    <ul>
+                        <li id="tomorrow-temp" class="temp"></li>
+                        <li id="tomorrow-wind" class="wind"></li>
+                        <li id="tomorrow-humid" class="humid"></li>
+                    </ul>
+                </div>
+                <div id="two-days" class="day  col-2 rounded">
+                    <h5 id="two-name" class="day-of-week"></h5>
+                    <img id="two-icon" class="icons">
+                    <ul>
+                        <li id="two-temp" class="temp"></li>
+                        <li id="two-wind" class="wind"></li>
+                        <li id="two-humid" class="humid"></li>
+                    </ul>
+                </div>
+                <div id="three-days" class="day  col-2 rounded">
+                    <h5 id="three-name" class="day-of-week"></h5>
+                    <img id="three-icon" class="icons">
+                    <ul>
+                        <li id="three-temp" class="temp"></li>
+                        <li id="three-wind" class="wind"></li>
+                        <li id="three-humid" class="humid"></li>
+                    </ul>
+                </div>
+                <div id="four-days" class="day  col-2 rounded">
+                    <h5 id="four-name" class="day-of-week"></h5>
+                    <img id="four-icon" class="icons">
+                    <ul>
+                        <li id="four-temp" class="temp"></li>
+                        <li id="four-wind" class="wind"></li>
+                        <li id="four-humid" class="humid"></li>
+                    </ul>
+                </div>
+                <div id="five-days" class="day  col-2 rounded">
+                    <h5 id="five-name" class="day-of-week"></h5>
+                    <img id="five-icon" class="icons">
+                    <ul>
+                        <li id="five-temp" class="temp"></li>
+                        <li id="five-wind" class="wind"></li>
+                        <li id="five-humid" class="humid"></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="./js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

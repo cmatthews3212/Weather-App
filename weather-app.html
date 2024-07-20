@@ -25,62 +25,63 @@
            <h3 class="text-center mb-4">Cities Searched</h3>
            <p class="test history rounded p-3">Chicago</p>
         </aside>
-        <main class="col-8 m-3 rounded">
+        <main id="weather" class="col-8 m-3 rounded d-none">
             <div class="top m-3">
                 <h2 id="city-today"></h2>
-                <img class="icon" src="./icons/cloud.svg">
-                <p>The sun is behind the clouds today!</p>
+                <img id="icon" class="icon mb-2">
+                <p id="sun-info"></p>
                 <ul>
-                    <li>Temp: 81 °F </li>
-                    <li>Wind: 6.43 mph</li>
-                    <li>Humidity: 46%</li>
+                    <li id="temp"></li>
+                    <li id="wind"></li>
+                    <li id="humid"></li>
                 </ul>
             </div>
             <hr class="hr mb-4"/>
+
             <div class="bottom row d-flex justify-content-around mb-4">
-                <div class="day col-2 rounded">
-                    <h5>Sunday</h5>
-                    <img src="./icons/brightness-high.svg">
+                <div id="tomorrow" class="day col-2 rounded">
+                    <h5 id="tomorrow-name" class="day-of-week"></h5>
+                    <img id="tomorrow-icon" class="icons">
                     <ul>
-                        <li>Temp: 81 °F </li>
-                        <li>Wind: 6.43 mph</li>
-                        <li>Humidity: 46%</li>
+                        <li id="tomorrow-temp" class="temp"></li>
+                        <li id="tomorrow-wind" class="wind"></li>
+                        <li id="tomorrow-humid" class="humid"></li>
                     </ul>
                 </div>
-                <div class="day  col-2 rounded">
-                    <h5>Sunday</h5>
-                    <img src="./icons/brightness-high.svg">
+                <div id="two-days" class="day  col-2 rounded">
+                    <h5 id="two-name" class="day-of-week"></h5>
+                    <img id="two-icon" class="icons">
                     <ul>
-                        <li>Temp: 81 °F </li>
-                        <li>Wind: 6.43 mph</li>
-                        <li>Humidity: 46%</li>
+                        <li id="two-temp" class="temp"></li>
+                        <li id="two-wind" class="wind"></li>
+                        <li id="two-humid" class="humid"></li>
                     </ul>
                 </div>
-                <div class="day  col-2 rounded">
-                    <h5>Sunday</h5>
-                    <img src="./icons/brightness-high.svg">
+                <div id="three-days" class="day  col-2 rounded">
+                    <h5 id="three-name" class="day-of-week"></h5>
+                    <img id="three-icon" class="icons">
                     <ul>
-                        <li>Temp: 81 °F </li>
-                        <li>Wind: 6.43 mph</li>
-                        <li>Humidity: 46%</li>
+                        <li id="three-temp" class="temp"></li>
+                        <li id="three-wind" class="wind"></li>
+                        <li id="three-humid" class="humid"></li>
                     </ul>
                 </div>
-                <div class="day  col-2 rounded">
-                    <h5>Sunday</h5>
-                    <img src="./icons/brightness-high.svg">
+                <div id="four-days" class="day  col-2 rounded">
+                    <h5 id="four-name" class="day-of-week"></h5>
+                    <img id="four-icon" class="icons">
                     <ul>
-                        <li>Temp: 81 °F </li>
-                        <li>Wind: 6.43 mph</li>
-                        <li>Humidity: 46%</li>
+                        <li id="four-temp" class="temp"></li>
+                        <li id="four-wind" class="wind"></li>
+                        <li id="four-humid" class="humid"></li>
                     </ul>
                 </div>
-                <div class="day  col-2 rounded">
-                    <h5>Sunday</h5>
-                    <img src="./icons/brightness-high.svg">
+                <div id="five-days" class="day  col-2 rounded">
+                    <h5 id="five-name" class="day-of-week"></h5>
+                    <img id="five-icon" class="icons">
                     <ul>
-                        <li>Temp: 81 °F </li>
-                        <li>Wind: 6.43 mph</li>
-                        <li>Humidity: 46%</li>
+                        <li id="five-temp" class="temp"></li>
+                        <li id="five-wind" class="wind"></li>
+                        <li id="five-humid" class="humid"></li>
                     </ul>
                 </div>
             </div>

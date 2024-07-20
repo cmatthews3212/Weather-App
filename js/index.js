@@ -1,6 +1,7 @@
 const searchBtn = document.getElementById('search-city');
 const cityInput = document.getElementById('city');
 
+//  button to search new zip code
 searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
     // console.log(cityInput.value)
@@ -8,7 +9,7 @@ searchBtn.addEventListener('click', function(event) {
     convertZip()
 })
 
-
+//  convert zip code to city for weather api
 function convertZip () {
     const apiKey = 'VgssbW4kdRpWeJjECntvng==nBgdtI7KDrVd5JZc';
     const url = `https://api.api-ninjas.com/v1/zipcode?zip=${cityInput.value}&X-Api-Key=${apiKey}`
@@ -30,6 +31,7 @@ function convertZip () {
 }
 
 
+// read cities added to storage
 
 function readStorage () {
     let existingData = localStorage.getItem('city');
@@ -44,6 +46,8 @@ function readStorage () {
 
 
 const cityArr = []
+
+// set new city to local storage
 
 function setLocalStorage (cityName) {
     // console.log(cityName.city)
@@ -61,6 +65,8 @@ function setLocalStorage (cityName) {
     historyButtons()
 
 }
+
+// conver city name to latitude and longitude for weather api
 
 function convertToNum (cityName) {
         const city = cityName.city
@@ -95,7 +101,7 @@ function convertToNum (cityName) {
 }
 
 
-
+// get data for today's weather
 function getCurrentWeather() {
     let currentDate = dayjs().format('YYYY-MM-DD')
     const apiKey = 'ccf6ee45f4426f5df18513805a5e47df';
@@ -120,7 +126,7 @@ function getCurrentWeather() {
 }
 
 
-
+// Add city name to displayed content
 function createCurrentWeatherName (cityName) {
     const weather = document.getElementById('weather')
     weather.classList.remove('d-none')
@@ -132,6 +138,7 @@ function createCurrentWeatherName (cityName) {
 
 }
 
+// Add city weather data to displayed content 
 function createCurrentWeatherData () {
 
        // icon and sun info
@@ -162,6 +169,8 @@ function createCurrentWeatherData () {
 
 }
 
+
+// The following functions add weather data to the next five days after the current date
 
 function getTomorrowWeather () {
     let tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD') 

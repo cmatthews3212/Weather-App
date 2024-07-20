@@ -10,7 +10,8 @@ N/A
 To use this app, please search the city you'd like to see the weather for in the search form. After searching your city, you should be able to see the current, and future weather for that city. 
 
 ## Screenshot
-<img src="./assets/images/weather.png">
+<img src="./images/weather-app.png">
+<img src="./images/weather-app-form.png">
 
 ## Link
 <a href="https://cmatthews3212.github.io/Weather-App/">Weather App Website</a>

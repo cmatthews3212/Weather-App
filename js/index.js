@@ -35,6 +35,9 @@ function readStorage () {
     if (existingData == null) {
         localStorage.setItem('city', array)
     }
+
+
+  
 }
 
 
@@ -53,7 +56,7 @@ function setLocalStorage (cityName) {
     cityArr.push(cityObj)
     const cityString = JSON.stringify(cityArr);
     localStorage.setItem('city', cityString);
-
+    historyButtons()
 
 }
 
@@ -98,7 +101,7 @@ function getCurrentWeather() {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -165,7 +168,7 @@ function getTomorrowWeather () {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -222,7 +225,7 @@ function getTwoWeather () {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -279,7 +282,7 @@ function getThreeWeather () {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -336,7 +339,7 @@ function getFourWeather () {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -393,7 +396,7 @@ function getFiveWeather () {
     fetch(url) 
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         sun = data.cloud_cover.afternoon
         temp = data.temperature.max
         wind = data.wind.max.speed
@@ -444,6 +447,42 @@ function createFiveWeatherData () {
 }
 
 
+// History Buttons
+
+function historyButtons () {
+    const btnsDiv = document.getElementById('history-btns')
+
+    // readStorage()
+    const getHistory = localStorage.getItem('city')
+    const historyParsed = JSON.parse(getHistory)
+    const lastZip = historyParsed.pop()
+    console.log(lastZip)
+    const historyBtn = document.createElement('p')
+    historyBtn.classList.add('history', 'rounded', 'p-3')
+
+    const apiKey = 'VgssbW4kdRpWeJjECntvng==nBgdtI7KDrVd5JZc';
+    const url = `https://api.api-ninjas.com/v1/zipcode?zip=${lastZip.city}&X-Api-Key=${apiKey}`
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+       for (const city of data) {
+        historyBtn.textContent = city.city
+        btnsDiv.appendChild(historyBtn)
+       }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    })
+    
+    
+    
+    
+   
+
+    
+    
+
+}
 
 
 

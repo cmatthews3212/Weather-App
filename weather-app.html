@@ -13,7 +13,7 @@
         <h5>By: Christine Matthews</h5>
     </header>
     <div class="content-container row m-3 d-flex justify-content-center">
-        <aside class="col-3 m-3 rounded">
+        <aside id="aside" class="col-3 m-3 rounded">
            <form>
             <div class="mb-3 mt-4">
                 <label for="city" class="form-label">Zip Code</label>
@@ -23,7 +23,9 @@
            </form>
            <hr class="hr mb-4"/>
            <h3 class="text-center mb-4">Cities Searched</h3>
-           <p class="test history rounded p-3">Chicago</p>
+           <div id="history-btns">
+                <p id="history" class="history rounded p-3 d-none">Chicago</p>
+           </div>
         </aside>
         <main id="weather" class="col-8 m-3 rounded d-none">
             <div class="top m-3">

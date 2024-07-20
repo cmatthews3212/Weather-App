@@ -1,0 +1,39 @@
+/*# sourceMappingURL=custom.css.map */
+
+:root {
+    --blue: #8ad0ce;
+    --light-blue: #bdf7ff;
+    --yellow: #ffe963;
+    --orange: #ff6d6d;
+    --dark-grey: #4b595e;
+}
+
+
+header {
+    background-color: var(--yellow);
+    border-bottom: 3px solid var(--dark-grey);
+}
+
+header h1, h5 {
+    padding-left: 20px;
+}
+
+.content-container aside, main {
+    background-color: var(--blue);
+}
+
+aside form .btn {
+    background-color: var(--light-blue);
+}
+
+aside form .btn:hover {
+    background-color: var(--dark-grey);
+    color: white;
+}
+
+aside hr {
+    background-color: var(--dark-grey);
+    border-width: 2px;
+}
+
+

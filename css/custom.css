@@ -31,7 +31,7 @@ aside form .btn:hover {
     color: white;
 }
 
-aside hr {
+ hr {
     background-color: var(--dark-grey);
     border-width: 2px;
 }
@@ -45,6 +45,31 @@ aside .history:hover {
     cursor: pointer;
     background-color: #4b595e;
     color: white;
+}
+
+main .top .icon {
+    width: 40px;
+}
+
+main .bottom .day {
+    background-color: var(--light-blue);
+}
+
+main .bottom h5 {
+    padding: 0;
+    margin: 10px 0px 10px 0px;
+}
+
+main .bottom img {
+    width: 30px;
+    margin-bottom: 10px;
+
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0;
 }
 
 
